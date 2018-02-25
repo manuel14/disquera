@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Ramos Generales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href='{% static "web/css/bootstrap.min.css" %}'>
+    <link rel="stylesheet" href='{% static "web/css/main.css" %}'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% block extraHead %}{% endblock extraHead %}
+</head>
+<body>
+    {% block header %}{% endblock header %}
+    {% block content %}{% endblock content %}
+    <script src='{% static "web/js/jquery-3.2.1.min.js" %}'></script>
+    <script src='{% static "web/js/popper.min.js" %}'></script>
+    <script src='{% static "web/js/bootstrap.min.js" %}'></script>
+    {% block extraScripts %}{% endblock extraScripts %}
+</body>
+</html>

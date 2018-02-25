@@ -1,0 +1,34 @@
+{% extends 'web/index.html' %}
+{% load staticfiles %}
+{% block extraHead %}
+<link rel="stylesheet" href="{% static 'web/css/photoswipe.css' %}"> 
+<link rel="stylesheet" href="{% static 'web/css/default-skin/default-skin.css' %}">
+<link rel="stylesheet" href="{% static 'web/css/galeria.css' %}">
+{% endblock extraHead %}
+{% block content %}
+    {% include "web/photoswipe.html" %}
+    <div class="container-fluid">
+        <br>
+        <hr>
+        <div class="row">
+            <h1 style="color:#d96459" class="mx-auto text-brown">Galería</h1>
+            <div id="my-gallery" class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                {% for imagen in imagenes  %}
+                    <figure class="image col-md-2 col-xs-12 mx-auto mb-4" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="{% static 'web/img/yayo-agua.jpg' %}" itemprop="contentUrl" data-size="600x400">
+                            <img src="{% static 'web/img/yayo-agua.jpg' %}" itemprop="thumbnail" alt="{{imagen.nombre}}" />
+                        </a>
+                        <figcaption itemprop="{{imagen.nombre}}">{{imagen.nombre}}</figcaption>
+                    </figure>
+                {% empty %}
+                    <h1>No hay imágenes</h1>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block extraScripts %}
+<script src="{% static 'web/js/photoswipe.min.js' %}"></script>
+<script src="{% static 'web/js/photoswipe-ui-default.min.js' %}"></script>
+<script src="{% static 'web/js/galeria.js' %}"></script>
+{% endblock extraScripts %}

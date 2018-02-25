@@ -1,0 +1,25 @@
+.card img{
+	height: 300px;
+	width: 100%;
+}
+
+.tab-content{
+	overflow-y: auto;
+}
+#result{
+	display: none;
+}
+.btn-toolbar{
+	background-color:#b9936c;
+	color: #fefbd8;
+}
+.btn-group{
+	margin-right: 0px;
+}
+.servicios{
+	background-color: #fefbd8;
+}
+.card{
+	width: 100%;
+	height: 100%;
+}
