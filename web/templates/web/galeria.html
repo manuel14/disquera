@@ -11,14 +11,14 @@
         <br>
         <hr>
         <div class="row">
-            <h1 style="color:#d96459" class="mx-auto text-brown">Galería</h1>
+            <h1 class="mx-auto text-white">Galería</h1>
             <div id="my-gallery" class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
                 {% for imagen in imagenes  %}
-                    <figure class="image col-md-2 col-xs-12 mx-auto mb-4" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                    <figure class="image col-md-3 col-xs-12 mx-auto" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                         <a href="{% static 'web/img/yayo-agua.jpg' %}" itemprop="contentUrl" data-size="600x400">
                             <img src="{% static 'web/img/yayo-agua.jpg' %}" itemprop="thumbnail" alt="{{imagen.nombre}}" />
                         </a>
-                        <figcaption itemprop="{{imagen.nombre}}">{{imagen.nombre}}</figcaption>
+                        <figcaption class="text-white text-center" itemprop="caption description">{{imagen.nombre}}</figcaption>
                     </figure>
                 {% empty %}
                     <h1>No hay imágenes</h1>

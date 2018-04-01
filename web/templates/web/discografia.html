@@ -8,69 +8,34 @@
     <br>
     <hr>
     <div class="row">
-        <h1 style="color:#d96459" class="text-center col-12">Catálogo de discos</h1>
-        <div class="btn-toolbar mx-auto mb-3" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group" role="group" aria-label="First group">
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=A">A</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=B">B</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=C">C</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=D">D</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=E">E</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=F">F</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=G">G</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=H">H</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=I">I</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=J">J</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=K">K</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=L">L</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=M">M</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=N">N</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=Ñ">&Ntilde;</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=O">O</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=P">P</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=Q">Q</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=R">R</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=S">S</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=T">T</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=U">U</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=V">V</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=W">W</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=X">X</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=Y">Y</a>
-                <a type="button" class="btn btn-toolbar" href="{% url 'discografia'  %}?letter=Z">Z</a>
-            </div>
-        </div>
+        <h1 class="text-center text-white col-12">Catálogo de discos</h1>
     </div>
     <div class="disks">
         <div class="row">
             <div class="col-12">
-                <div class="form-group col-3 offset-9 mb-3">
-                        <input type="text" class="form-control search" placeholder="Buscar">
-                </div>
                 <div class="tab-content">
                     <div class="tab-pane active" id="clientes" role="tabpanel" data-page="1">
                         <div class="contentCol">
                             <div class="card-group">
                                 {% for disco in discos  %}
-                                <div class="col-3 mb-2">    
+                                <div class="col-md-3 col-12 mb-2">    
                                     <div class="card servicios text-center" data-pk="{{disco.pk}}" data-nombre="{{disco.nombre}}" data-artista="{{disco.artista.nombre}}">
                                         {% if disco.imagen  %}
                                             <img class="card-img-top mx-auto" src="{{disco.imagen.url}}" alt="Card image cap">
                                         {% endif %}
                                         <div class="card-body">
-                                            <h4 class="card-title">{{disco.nombre}}</h4>
-                                            <p class="card-text">{{disco.artista.nombre}}-{{disco.anio}}
+                                            <h4 class="card-title text-white">{{disco.nombre}}</h4>
+                                            <p class="card-text text-white">{{disco.artista.nombre}}-{{disco.anio}}
                                             </p>
                                             <button class="btn btn-primary">Agregar al carrito</button>
                                         </div>
                                     </div>
                                 </div>
                                 {% empty %}
-                                    <h1 class="ml-5">No hay discos que comiencen con esta letra</h1>
+                                    <h1 style="width: 100%; height:100%;" class="text-center mx-auto">No hay discos que comiencen con esta letra</h1>
                                 {% endfor %}
                             </div>
                         </div>
-                        
                         <div class="resultsCol">
                             <div id="result" class="card-group"></div>
                         </div>
@@ -80,7 +45,6 @@
         </div>
     </div>
 </div>
-
 {% endblock content %}
 {% block extraScripts %}
 <script>
@@ -170,5 +134,4 @@
         }
     });
 </script>
-    
 {% endblock extraScripts %}

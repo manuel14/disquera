@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Disco
+from .models import Disco, Nota, Evento
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
 import os
 
@@ -47,5 +48,24 @@ def galeria(request):
     print(imagenes)
     return render(request, 'web/galeria.html', {"imagenes": imagenes})
 
+
 def prensa(request):
     notas = Nota.objects.all().order_by("-fecha")
+    page = request.GET.get('page', 1)
+    paginator = Paginator(notas, 5)
+    try:
+        page_notas = paginator.page(page)
+    except PageNotAnInteger:
+        page_notas = paginator.page(1)
+    except EmptyPage:
+        page_notas = paginator.page(paginator.num_pages)
+    return render(request, 'web/prensa.html', {"notas": page_notas})
+
+
+def eventos(request):
+    eventos = Evento.objects.all().order_by('-fecha')
+    return render(request, 'web/eventos.html', {"eventos": eventos})
+
+
+def quienes_somos(request):
+    return render(request, 'web/quienes_somos.html')

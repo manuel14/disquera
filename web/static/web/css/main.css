@@ -20,6 +20,9 @@
         white-space:nowrap;
         -webkit-overflow-scrolling:touch
     }
+    html, body{
+        overflow-x: hidden;
+    }
 }
 @media (min-width:768px){
     @supports ((position:-webkit-sticky) or (position:sticky)){
@@ -45,14 +48,15 @@
 .bd-navbar .dropdown-menu{
     font-size:.875rem
 }
-
 .nav-link{
     margin-right: 12px;
     color: #d96459;
     font-size: 24px;
 
 }
-
+html, body{
+    width: 100%;
+}
 #nav_titulo{
-    background-color: #fefbd8;
+    background-color: #3e4444;
 }

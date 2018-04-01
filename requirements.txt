@@ -2,3 +2,5 @@ Django==1.11.1
 gunicorn >= 19.6.0
 raven==6.1.0
 Pillow>=4.3.0
+django-nested-admin
+django-tinymce

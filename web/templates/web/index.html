@@ -4,34 +4,36 @@
     <link rel="stylesheet" href='{% static "web/css/index.css" %}'>
 {% endblock extraHead %}
 {% block header %}
-  <div id="nav_titulo" class="container-fluid">
+  <div id="nav_titulo">
     <div class="row">
       <div class="col-12">
         <a href="{% url 'index' %}">
-            <h1 id="titulo" style="color:#d96459" class="text-center">Ramos generales</h1>
+            <h1 id="titulo" class="text-center text-white">Ramos generales</h1>
         </a>
         <div class="navbar-nav-scroll">
           <ul class="navbar-nav bd-navbar-nav flex-md-row">
-            <li class="nav-item mr-3 mx-auto">
-              <a class="nav-link" href="#nosotros">Algo de historia</a>
+            <li  class="nav-item mr-3 mx-auto {% block activeNosotros %}{% endblock activeNosotros %}">
+              <a class="nav-link text-white" href="#">Algo de historia</a>
             </li>
-            <li class="nav-item mx-auto">
-              <a class="nav-link" href="#quienes_somos">Quienes somos</a>
-            </li>
-            <li class="nav-item mr-3 mx-auto">
-              <a class="nav-link" href="#nosotros">Productora</a>
+            <li class="nav-item mx-auto {% block activeQuienesSomos %}{% endblock activeQuienesSomos %}">
+              <a class="nav-link text-white" href="{% url 'quienes_somos' %}">Quienes somos</a>
             </li>
             <li class="nav-item mr-3 mx-auto">
-              <a class="nav-link" href="{% url 'galeria' %}">Galería</a>
+              <a class="nav-link text-white" href="{% url 'eventos' %}">Próximos eventos</a>
             </li>
             <li class="nav-item mr-3 mx-auto">
-              <a class="nav-link active" href="{% url 'discografia' %}">Catálogo</a>
+              <a class="nav-link text-white" href="{% url 'galeria' %}">Galería</a>
             </li>
             <li class="nav-item mr-3 mx-auto">
-              <a class="nav-link" href="#">Prensa</a>
+              <a class="nav-link active text-white" href="{% url 'discografia' %}">Catálogo</a>
             </li>
             <li class="nav-item mr-3 mx-auto">
-              <a class="nav-link" href="#contacto">Seguinos en facebook</a>
+              <a class="nav-link text-white" href="{% url 'prensa' %}">Prensa</a>
+            </li>
+            <li class="nav-item mr-3 mx-auto">
+              <div class="fb-like" data-href="https://www.facebook.com/Prueba-431625593935938/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+          
+            </div>
             </li>
           </ul>
         </div>
@@ -49,10 +51,10 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <h1 style="color:#555" class="col-12 offset-md-3">Bienvenidos a Ramos generales</h1>
+            <h1 class="col-12 text-center text-white mt-2">Bienvenidos a Ramos generales</h1>
             <br>
-            <hr>
-            <p class="text-justify" style="font-size:18px;">
+            <hr class="col-12">
+            <p class="text-justify text-white" style="font-size:18px;">
               "Ramos Generales" es una productora de contenidos artísticos, nacida a finales de 2017,  con el objetivo de interactuar entre la sociedad y los artistas a través de la cultura, haciendo eje en la excelencia del producto, ya sea en la magnificencia de un concierto sinfónico,  la sencillez de un dibujo a lápiz de un artista plástico hasta la intimidad de un poeta leyendo sus poemas en solitario.
 
               Con más de 25 años realizando eventos culturales en el ámbito regional y en Buenos Aires, Carlos Lezcano y Pedro Zubieta, su paso por la gestión pública y privada les ha permitido crear un círculo virtuoso que involucra a importantes actores de la cultura correntina,  haciendo eje especialmente en la juventud, ya que esta labor les ha permitido a lo largo de los años, apuntalar la carrera de nuevos valores de variadas disciplinas.
@@ -61,110 +63,19 @@
               En la faz musical, se destaca además  la grabación y difusión de cerca de 30 discos de artistas chamameseros, entre los que podemos destacar registros de Mateo Villalba, Rudi y Nini Flores, Belén Majul, "Gatti - Osuna", Juan Pedro Sorribes, Gabino Chávez, Florencia de Pompert, Gabriel Cocomarola, Alejandro "Piri" Araoz, "Las Guitarras de Curuzu" y Julio Ramírez, entre otros.
 
               En la búsqueda de la excelencia y con el convencimiento del enorme patrimonio cultural que alberga Corrientes, sale a rodar "Ramos Generales" como una manera de ponerle nombre y apellido a una gestión cultural de casi 30 años.
-
             </p>
           </div>
-        </div>
-      </div>
-    </div>
-    <div id="quienes_somos">
-      <div class="card-group">
-        <div class="card nosotros col-md-6 col-12" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title text-center">Carlos Aníbal "Ventolín" Lezcano</h5>
-            <img class="card-img-top" src="{% static 'web/img/lezcano.png' %}" alt="Card image cap">
-            <p class="card-text text-justify mt-3">
-                Nacido en corrientes en el año 1964.Periodista, ex Subsecretario de Cultura de la Provincia de Corrientes.
-                Como Gestor Cultural en el campo privado, ha producido ciclos de música, literatura y muestras de artes plásticas en el ámbito regional desde 1984 hasta el presente, entre los que se destacan ciclos de Rudi y Nini Flores en “Clásica y moderna” (Buenos Aires); la retrospectiva de José Fontenau (Corrientes); Nini Flores en el “Teatro Colón” (Buenos Aires); el ciclo de música contemporánea “Eso es música” junto a León Ferrari en el “Teatro Vera”; la presentación del tenor José Carreras en Corrientes; la muestra de Cándido López y las plásticas de la “Guerra guazú”; por citar algunas.
-                En el campo del periodismo colabora en medios gráficos como el diario “Epoca” y “El Libertador” de Corrientes;  y ha sido creador de ciclos radiales como “Esperando a Godoy” y  “El Refugio” (FM Capital); “Todos los vientos” (Radio UNNE); “Lado B” junto a Cacho González Vedoya en “FM Federal”; entre otros.
-                Ha editado un libro, "Industria Chamame", junto a Juan Pedro Zubieta, presentado en distintos ámbitos como la "Feria del Libro" de Caa Cati y de Porto Alegre (Brasil).</p>    
-          </div>
-        </div>
-        <div class="card nosotros col-md-6 col-12" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title text-center">Juan Pedro "topo" Zubieta</h5>
-            <img class="card-img-top" src="{% static 'web/img/zubieta.png' %}" alt="Card image cap">
-              <p class="card-text text-justify mt-3">
-                Nacido en Corrientes en el año 1964.
-                Acordeonista y guitarrista aficcionado es Miembro Adherente de la Academia Nacional del Folklore y Miembro de Número de la Junta de Historia de Corrientes. 
-                Publicó artículos relacionados con el chamamé en diarios y revistas como “Todo es Historia” (Buenos Aires), “Cultura Folklórica” (Ituzaingo, BA), “Rosario Express” (Rosario, Sta. Fe), “Nuestro Folklore” (Tandil BA) y el “Diario Epoca” de  Corrientes. 
-                Tiene editados 5 libros, cuatro sobre la temática chamame.
-                Ha ofrecido conferencias sobre chamame en ámbitos como la cátedra de castellano de la Universidad de Harvard (EEUU); el  Congreso de Folklore de San Luis (2010); el Museo de Puerto Tirol (Chaco); el Instituto del  Servicio Exterior de la Nación (ISEN); el Centro Cultural del Bicentenario (Buenos Aires); la Cátedra de Chamame de Federal (Entre Ríos), el Congreso de Historia de Empedrado (Corrientes); el Centro Cultural Alternativo (CE.CU.AL.) de la ciudad de Resistencia (Chaco) y ferias del libro de Buenos Aires, Corrientes y Caa Catí, entre otras.
-                Ha producido discos y recitales de artistas como Rudi y Nini Flores, Mateo Villalba, Gabino Chávez, Yayo Cáceres, Gabriel Cocomarola y “Las Guitarras de Curuzu”,  por citar algunos. 
-                Desde el año 2009 colabora con la “Fundación Memoria del Chamame” y tiene a su cargo los contenidos del “Museo Virtual del Chamame”.
-            </p>    
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="second">
-      <div class="row">
-          <h1 id="h1_discografia" class="col-12 mt-3 mb-4">Nuestros discos</h1>
-          <hr class="col-4">
-      </div>
-      <div class="row">
-        <div class="card-group col-12">
-            <div class="card text-center discos-cards ">
-              <img class="card-img-top mx-auto discos" src="{% static 'web/img/mateo-terrunero.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-            </div>
-            <div class="card text-center discos-cards">
-              <img class="card-img-top mx-auto discos" src="{% static 'web/img/piri-cancionesconraiz.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-            <div class="card text-center discos-cards">
-              <img class="card-img-top mx-auto discos" src="{% static 'web/img/gavino-inolvidableamor.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              </div>
-            </div>
-          </div>
-      </div>
-      <div class="card-group">
-        <div class="row">
-          <div class="card text-center discos-cards">
-            <img class="card-img-top mx-auto discos" src="{% static 'web/img/guitarras-acordes.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-          <div class="card text-center discos-cards">
-            <img class="card-img-top mx-auto discos" src="{% static 'web/img/purahei.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-          <div class="card text-center discos-cards">
-            <img class="card-img-top mx-auto discos" src="{% static 'web/img/yayo-agua.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-4 mb-4">
-        <div class="col-12">
-          <button id="discografia" class="btn btn-primary offset-md-5">Ver todos los discos disponibles</button>
         </div>
       </div>
     </div>
     <div id="contacto" name="contacto" class="contacto">
       <div class="row">
         <div class="col-12">
-          <h6 class="text-center">Mail: manuelzubieta@gmail.com</h6>
-          <h6 class="text-center">Teléfono: 414441</h6>
-          <h6 class="text-center">Facebook: manuel</h6>
-        </div>
+          <hr class="col-10 mt-2">
+          <h6 class="text-center text-white">ramosgenerales@gmail.com</h6>
+          <h6 class="text-center text-white">Teléfono: 414441</h6>
+          <h6 class="text-center text-white">Facebook: manuel</h6>
+          <h5 class="text-center text-white offset-md-9">Desarrollado por Manuel Zubieta</h5>
       </div>
     </div>
 {% endblock content %}

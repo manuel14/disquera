@@ -1,5 +1,85 @@
 {% extends 'web/index.html' %}
+{% load staticfiles %}
+{% block activeNotas %}active{% endblock activeNotas %}
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'web/css/default-skin/default-skin.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/photoswipe.css' %}"> 
+    <link rel="stylesheet" href="{% static 'web/css/prensa.css' %}">
+{% endblock extraHead %}
 {% block content %}
-
-	
+{% include "web/photoswipe.html" %}
+<div class="container-fluid">
+    <br>
+    <hr>
+    <h1 class="titulo text-center text-white mb-3">Notas realizadas</h1>
+    <div class="row notas">
+        {% for n in notas  %}
+            <div class="nota-container">   
+                <div class="row imagenes mx-auto">
+                    <h1 style="text-decoration: underline" class="text-center text-white mx-auto"><strong>{{n.titulo}}</strong></h1>
+                    <h5 class="text-justify text-white text-nota">{{n.descripcion|safe}}</h5>
+                    {% if n.imagenes %}
+                        <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                            {% for img in n.imagenes.all %}
+                                <figure class="image col-md-3 col-xs-12 col-sm-3"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
+                                    <a href="{{img.link.url}}" itemprop="contentUrl" data-size="600x400">
+                                        <img src="{{img.link.url}}" itemprop="thumbnail">
+                                    </a>
+                                    <figcaption class="text-white" itemprop="{{img.nombre}}">{{img.nombre}}</figcaption>
+                                </figure>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row videos mx-auto">
+                    {% if n.videos %}
+                        {% for video in n.videos.all %}
+                            <div class="col-md-4 col-12">
+                                <div class="thumbnail">
+                                    <h3>{{video.nombre}}</h3>
+                                    <video preload="metadata" controls style="max-width:100%;">
+                                        <source src="{{video.link.url}}" type="video/mp4">Su explorador es antiguo. Actualicelo para reproducir videos.
+                                    </video>
+                                </div>
+                            </div>
+                        {% empty %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <hr class="col-12">
+        {% endfor %}
+    </div>  
+</div>
+<nav aria-label="Page navigation example">
+    {% if avisos.has_other_pages %}
+        <ul class="pagination justify-content-center">
+            {% if avisos.has_previous %}
+              <li class="page-item"><a class="page-link previous" href="?page={{ avisos.previous_page_number }}">Anterior</a></li>
+            {% else %}
+              <li class="page-item disabled"><span class="page-link previous">Anterior</span></li>
+            {% endif %}
+            {% for i in avisos.paginator.page_range %}
+              {% if avisos.number == i %}
+                <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+              {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if avisos.has_next %}
+              <li class="page-item"><a class="page-link next" href="?page={{ avisos.next_page_number }}">Siguiente</a></li>
+            {% else %}
+                 <li class="page-item disabled">
+                <span class="page-link next">Siguiente</span>
+                </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+</nav>
 {% endblock content %}
+{% block extraScripts %}
+    <script src="{% static 'web/js/photoswipe.min.js' %}"></script>
+    <script src="{% static 'web/js/photoswipe-ui-default.min.js' %}"></script>
+    <script src="{% static 'web/js/galeria.js' %}"></script>
+{% endblock extraScripts %}
