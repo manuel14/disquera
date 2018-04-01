@@ -1,0 +1,47 @@
+.my-gallery {
+  width: 100%;
+}
+.my-gallery img {
+  width: 100%;
+  height: auto;
+}
+.my-gallery figure {
+  display: block;
+  margin: 0 5px 5px 0;
+  width: 100%;
+}
+.notas{
+	height: 100%;
+}
+.titulo{
+	margin:0px;
+}
+.container-fluid{
+	background-color: #3e4444;
+}
+hr{
+    width: 95%
+    font-size: 1px;
+    color: rgba(0, 0, 0, 0);
+    line-height: 1px;
+    background-color: grey;
+    margin-top: 0px;
+    z-index:100;
+    position:relative;
+}
+
+@media(max-width: 767px){
+  hr{
+    margin-top:0px;
+    width: 95%
+      font-size: 1px;
+      color: rgba(0, 0, 0, 0);
+      line-height: 1px;
+      background-color: grey;
+      z-index:100;
+      position:relative;
+  }
+  #nav_titulo{
+      height: 90vmax;
+   }
+}
