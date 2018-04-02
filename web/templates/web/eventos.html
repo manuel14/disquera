@@ -9,40 +9,44 @@
 {% include "web/photoswipe.html" %}
 <div class="container-fluid">
     <br>
-    <hr>
-    <h1 class="text-center text-white titulo mb-3">Próximos eventos</h1>
-    <div class="row notas">
-        {% for e in eventos  %}
-            <div class="nota-container">
-                <div class="row imagenes">
-                	<h1 style="text-decoration: underline" class="text-center  text-white mx-auto col-12"><strong>{{e.nombre}}</strong></h1>
-                    {% if e.foto %}
-                        <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-                            <figure class="ActividadImage col-md-3 col-xs-12 col-sm-3 mx-auto"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
-                                <a href="{{e.foto.url}}" itemprop="contentUrl" data-size="480x320">
-                                    <img onContextMenu="return false;" src="{{e.foto.url}}" itemprop="thumbnail">
-                                </a>
-                                <figcaption class="text-white" itemprop="{{e.imagen.nombre}}">{{e.imagen.nombre}}</figcaption>
-                            </figure>
-                        </div>
-                    {% endif %}
-                    <h5 class="text-justify text-center text-white text-nota col-12">{{e.descripcion|safe}}</h5>
-                </div>
-                <div class="row videos mx-auto">
-                    {% if e.video %}
-                        <div class="col-md-4 col-12 mx-auto">
-                            <div class="thumbnail">
-                                <video preload="metadata" controls controlsList="nodownload" style="max-width:100%;">
-                                    <source src="{{e.video.url}}" type="video/mp4">Su explorador es antiguo. Actualicelo para reproducir videos.
-                                </video>
+    <hr class="col-12">
+    {% if eventos %}
+        <h1 class="text-center text-white titulo mb-3">Próximos eventos</h1>
+        <div class="row notas">
+            {% for e in eventos  %}
+                <div class="nota-container">
+                    <div class="row imagenes">
+                        <h1 style="text-decoration: underline" class="text-center  text-white mx-auto col-12"><strong>{{e.nombre}}</strong></h1>
+                        {% if e.foto %}
+                            <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                                <figure class="ActividadImage col-md-3 col-xs-12 col-sm-3 mx-auto"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
+                                    <a href="{{e.foto.url}}" itemprop="contentUrl" data-size="480x320">
+                                        <img onContextMenu="return false;" src="{{e.foto.url}}" itemprop="thumbnail">
+                                    </a>
+                                    <figcaption class="text-white" itemprop="{{e.imagen.nombre}}">{{e.imagen.nombre}}</figcaption>
+                                </figure>
                             </div>
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                        <h5 class="text-justify text-center text-white text-nota col-12">{{e.descripcion|safe}}</h5>
+                    </div>
+                    <div class="row videos mx-auto">
+                        {% if e.video %}
+                            <div class="col-md-4 col-12 mx-auto">
+                                <div class="thumbnail">
+                                    <video preload="metadata" controls controlsList="nodownload" style="max-width:100%;">
+                                        <source src="{{e.video.url}}" type="video/mp4">Su explorador es antiguo. Actualicelo para reproducir videos.
+                                    </video>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-            <br>
-            <hr class="col-12">
+                <br>
+                <hr class="col-12">
         {% endfor %}
+    {% else %}
+        <h1 class="text-center text-white">No hay eventos aún.</h1>
+    {% endif %}
     </div>  
 </div>
 {% endblock content %}

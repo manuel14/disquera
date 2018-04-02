@@ -6,11 +6,12 @@
 {% block content %}
 <div class="container-fluid">
     <br>
-    <hr>
+    <hr class="col-12">
+    {% if discos %}
     <div class="row">
         <h1 class="text-center text-white col-12">Catálogo de discos</h1>
     </div>
-    <div class="disks">
+    <div class="disks mt-2">
         <div class="row">
             <div class="col-12">
                 <div class="tab-content">
@@ -30,108 +31,18 @@
                                             <button class="btn btn-primary">Agregar al carrito</button>
                                         </div>
                                     </div>
-                                </div>
-                                {% empty %}
-                                    <h1 style="width: 100%; height:100%;" class="text-center mx-auto">No hay discos que comiencen con esta letra</h1>
+                                </div>     
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="resultsCol">
-                            <div id="result" class="card-group"></div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% else %}
+        <h1 class="text-center mx-auto text-white">No hay discos que comiencen con esta letra</h1>
+    {% endif %}
 </div>
 {% endblock content %}
-{% block extraScripts %}
-<script>
-    data = {{data|safe}};
-</script>
-<script>
-    $(document).ready(function(){
-        var timeout;
-        $('.search').keyup(function(e) {
-            value = $(this).val().toUpperCase();
-            pContainer = $(this).parent().parent();
-            clearTimeout(timeout);
-            timeout = setTimeout(function() {
-                if (value) {
-                    pContainer.find('.contentCol').css('display', 'none');
-                    pContainer.find('#result').css('display', 'block');
-                    activetTab = pContainer.find('.active[role="tabpanel"]');
-                    cards = data;
-                    var results = [];
-                    $.each(cards, function(i, card) {
-                        if (card["nombre"].toUpperCase().indexOf(value) > -1 || card["artista"].toUpperCase().indexOf(value) > -1) {
-                            results.push(card);
-                        }
-                    })
-                    pContainer.find('#result').empty();
-                    crearDiscos(activetTab, results, '#result');
-                }
-                else{
-                    pContainer.find('.contentCol').css('display', 'block');
-                    pContainer.find('#result').css('display', 'none');
-                }
-                pContainer.find('.tab-content').scrollTop(0);
-            }, 500);
-        });
-
-        $('.tab-content').scroll(function() {
-            if ($(this).scrollTop() + $(this).innerHeight() + 100 >= $(this)[0].scrollHeight) {
-                activetTab = $(this).find('.active[role="tabpanel"]');
-                if (activetTab.find('.contentCol').is(':visible')) {
-                    page = activetTab.data('page');
-                    tab = activetTab[0].id;
-                    list = data[tab].slice(page * 15, 15 + page * 15);
-                    window[tab](activetTab, list, '.contentCol');
-                    $('#'+tab).data('page', ++page);
-                }
-            }
-        });
-
-        function crearDiscos(activetTab, results, container){
-            $.each(results, function(i, disco) {
-                card_container = $(document.createElement('div')).attr({
-                    'class': 'col-3'
-                });
-                card = $(document.createElement('div')).attr({
-                    'class': 'card servicios text-center sm-light',
-                    'data-pk': disco["pk"],
-                    'data-nombre': disco["nombre"],
-                    'data-artista': disco["artista"],
-                });
-                if (disco["imagen"]){
-                    html = `
-                        <img class="card-img-top mx-auto" src="`+disco["imagen"]+`" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">`+disco["nombre"]+`</h4>
-                            <p class="card-text">`+disco["artista"]+`
-                            </p>
-                            <button class="btn btn-primary">Agregar al carrito</button>
-                        </div>
-                    `
-                }
-                else{
-                    html=
-                    `
-                    <div class="card-body">
-                            <h4 class="card-title">`+disco["nombre"]+`</h4>
-                            <p class="card-text">`+disco["artista"]+`
-                            </p>
-                            <button class="btn btn-primary">Agregar al carrito</button>
-                        </div>
-                    `
-                }
-                card.append(html);
-                card_container.append(card);
-                activetTab.find(container).append(card_container);
-
-            });
-        }
-    });
-</script>
-{% endblock extraScripts %}

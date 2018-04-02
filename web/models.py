@@ -16,7 +16,7 @@ class Disco(models.Model):
     anio = models.DateField(
         auto_now=False, auto_now_add=False, blank=True, null=True)
     imagen = models.ImageField(
-        'Imagen', upload_to='images/', default='', blank=True, null=True)
+        'Imagen', upload_to='images/', default='')
     descripcion = models.CharField(max_length=300, null=True, blank=True)
 
     def __str__(self):

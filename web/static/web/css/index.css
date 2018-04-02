@@ -1,17 +1,19 @@
 #logo{
     width:100%;
-    height:20%;
+    height:40vmax;
     padding: 0px;
 }
 #nosotros{
     width:100%;
-    height:20%;
-    background-color: #3e4444;
+    height:30vmax;
 }
 #contacto{
     width: 100%;
-    height: 20%;
-    background-color: #3e4444;
+    height: 10vmax;
+}
+.container-fluid{
+  background-color:#3e4444;
+  padding: 0px;
 }
 hr{
     width: 95%
@@ -39,10 +41,9 @@ hr{
 }
 #logo_img{
     width: 100%;
-    height: 48vmax;
+    height: 40vmax;
 }
 .card-img-top{
-
     margin-top: 15px;
 }
 @media(max-width: 767px){
@@ -52,16 +53,19 @@ hr{
     #titulo{
         margin-left: 10px;
     }
-    #logo_img{
+    #logo{
       display: none;
     }
     #nav_titulo{
-      height: 80vmax;
+      height: 90vmax;
     }
     #nosotros{
       display: none;
     }
+    #contacto{
+      height: 40vmax;
+    }
 }
-body{overflow-x: hidden;}
+
 
 

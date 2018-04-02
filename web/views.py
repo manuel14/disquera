@@ -12,27 +12,13 @@ def index(request):
 
 def discografia(request):
     letter = request.GET.get("letter", None)
-    result = []
     if letter:
         discos = Disco.objects.filter(
             nombre__startswith=letter).order_by('artista__nombre')
     else:
         discos = Disco.objects.all().order_by('artista__nombre')
-
-    for d in discos:
-        dic = {}
-        dic["pk"] = d.pk
-        dic["nombre"] = d.nombre
-        if d.artista:
-            dic["artista"] = d.artista.nombre
-        else:
-            dic["artista"] = ""
-        dic["imagen"] = d.imagen.url
-        result.append(dic)
-
-    json_clientes = json.dumps(result)
     return render(request, 'web/discografia.html',
-                  {"discos": discos, "data": json_clientes})
+                  {"discos": discos})
 
 
 def galeria(request):
