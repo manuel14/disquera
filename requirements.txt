@@ -4,3 +4,4 @@ raven==6.1.0
 Pillow>=4.3.0
 django-nested-admin
 django-tinymce
+psycopg2
