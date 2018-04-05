@@ -142,7 +142,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'ramos',
-            'USER': 'ramos',
+            'USER': 'mzubieta',
             'PASSWORD': 'pucheto22',
             'HOST': 'localhost'
         }
