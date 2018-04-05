@@ -23,9 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5_m7xu#1hvisx!gzix2n#d!u^(pi@+19y^7=k$95grr#d48k27'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+try:
+    from .local_settings import *
+except ImportError:
+    DEBUG = True
 
 
 # Application definition
@@ -127,3 +128,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 URL_SERVER = ''
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+    ALLOWED_HOSTS = ['*']
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ramos',
+            'USER': 'ramos',
+            'PASSWORD': 'pucheto22',
+            'HOST': 'localhost'
+        }
+    }
+    ALLOWED_HOSTS = ['www.ramosgenerales.org', 'localhost', '167.99.145.160']
