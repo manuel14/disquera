@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import Disco, Nota, Evento
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import json
 import os
 
 
@@ -55,3 +54,13 @@ def eventos(request):
 
 def quienes_somos(request):
     return render(request, 'web/quienes_somos.html')
+
+def error400(request):
+    return render(request, 'web/400.html')
+
+def error404(request):
+    return render(request, 'web/404.html')
+
+
+def error500(request):
+    return render(request, 'web/500.html')

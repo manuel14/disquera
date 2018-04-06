@@ -26,9 +26,6 @@ hr{
     position:relative;
     margin: 0px;
 }
-.container-fluid{
-	background-color: #3e4444;
-}
 .text-nota{
   line-height: 1.8;
   margin-left: 25px;

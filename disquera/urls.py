@@ -19,8 +19,12 @@ from web import urls as web_urls
 from django.conf.urls.static import static
 from django.conf import settings
 
+handler404 = 'web.views.error404'
+handler400 = 'web.views.error400'
+handler500 = 'web.views.error500'
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(web_urls)),
     url(r'^_nested_admin/', include('nested_admin.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
