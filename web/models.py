@@ -13,8 +13,7 @@ class Artista(models.Model):
 class Disco(models.Model):
     nombre = models.CharField(max_length=200)
     artista = models.ForeignKey(Artista, on_delete=None, null=True, blank=True)
-    anio = models.DateField(
-        auto_now=False, auto_now_add=False, blank=True, null=True)
+    anio = models.IntegerField(blank=True, null=True)
     imagen = models.ImageField(
         'Imagen', upload_to='images/', default='')
     descripcion = models.CharField(max_length=300, null=True, blank=True)
