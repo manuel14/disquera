@@ -30,7 +30,6 @@ def galeria(request):
             nombre = file.split(".")[0]
             dic = {"url": img, "nombre": nombre}
             imagenes.append(dic)
-    print(imagenes)
     return render(request, 'web/galeria.html', {"imagenes": imagenes})
 
 
