@@ -55,3 +55,6 @@ class Evento(models.Model):
     fecha = models.DateField(auto_now=False, auto_now_add=False)
     foto = models.ImageField('foto', upload_to='images/')
     video = models.FileField(upload_to='videos/', blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre
