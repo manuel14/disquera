@@ -27,7 +27,8 @@ def galeria(request):
         if file.endswith(('.jpg', '.png', '.jpeg')):
             img = settings.URL_SERVER
             img += os.path.join(img, settings.MEDIA_ROOT, 'galeria', file)
-            nombre = file.split(".")[0]
+            # Para codificar caracteres que salen de utf8
+            nombre = file.split(".")[0].encode('utf8', 'surrogateescape')
             dic = {"url": img, "nombre": nombre}
             imagenes.append(dic)
     return render(request, 'web/galeria.html', {"imagenes": imagenes})
@@ -54,8 +55,10 @@ def eventos(request):
 def quienes_somos(request):
     return render(request, 'web/quienes_somos.html')
 
+
 def error400(request):
     return render(request, 'web/400.html')
+
 
 def error404(request):
     return render(request, 'web/404.html')
