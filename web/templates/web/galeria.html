@@ -15,7 +15,7 @@
             <div id="my-gallery" class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
                 {% for imagen in imagenes  %}
                     <figure class="image col-md-3 col-xs-12 mx-auto" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                        <a href="{% static 'web/img/yayo-agua.jpg' %}" itemprop="contentUrl" data-size="600x400">
+                        <a href="{{imagen.url}}" itemprop="contentUrl" data-size="600x400">
                             <img src="{{imagen.url}}" itemprop="thumbnail" alt="{{imagen.nombre}}"/>
                         </a>
                         <figcaption class="text-white text-center" itemprop="caption description">{{imagen.nombre}}</figcaption>
