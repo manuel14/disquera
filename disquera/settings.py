@@ -128,7 +128,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-URL_SERVER = ''
+URL_SERVER = 'http://167.99.145.160'
 
 if DEBUG:
     DATABASES = {
