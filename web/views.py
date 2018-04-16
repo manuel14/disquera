@@ -26,7 +26,7 @@ def galeria(request):
     for file in os.listdir(path):
         if file.endswith(('.jpg', '.png', '.jpeg')):
             img = settings.URL_SERVER
-            img += os.path.join(img, settings.MEDIA_ROOT, 'galeria', file)
+            img += os.path.join(img, settings.MEDIA_URL, 'galeria', file)
             # Para codificar caracteres que salen de utf8
             nombre = file.split(".")[0].encode('utf8', 'surrogateescape')
             dic = {"url": img, "nombre": nombre}
