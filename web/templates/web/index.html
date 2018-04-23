@@ -10,7 +10,7 @@
         <div class="navbar-nav-scroll">
           <ul class="navbar-nav bd-navbar-nav flex-md-row">
             <li  class="nav-item mr-3 mx-auto {% block activeNosotros %}{% endblock activeNosotros %}">
-              <a class="nav-link text-white" href="#">Algo de historia</a>
+              <a class="nav-link text-white" href="{% url 'nosotros' %}">Algo de historia</a>
             </li>
             <li class="nav-item mx-auto {% block activeQuienesSomos %}{% endblock activeQuienesSomos %}">
               <a class="nav-link text-white" href="{% url 'quienes_somos' %}">Quienes somos</a>
@@ -71,7 +71,6 @@
         <div class="col-12">
           <hr class="col-10 mt-2">
           <h6 class="text-center text-white">ramosgenerales@gmail.com</h6>
-          <h6 class="text-center text-white">Teléfono: 414441</h6>
           <h5 class="text-center text-white offset-md-9">Desarrollado por Manuel Zubieta</h5>
       </div>
     </div>

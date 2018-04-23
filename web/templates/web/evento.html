@@ -1,0 +1,56 @@
+{% extends 'web/index.html' %}
+{% load staticfiles %}
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'web/css/default-skin/default-skin.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/photoswipe.css' %}">
+	<link rel="stylesheet" href="{% static 'web/css/eventos.css' %}">
+{% endblock extraHead %}
+{% block content %}
+{% include "web/photoswipe.html" %}
+<div class="container-fluid">
+    <br>
+    <hr class="col-12">
+        <h1 class="text-center text-white titulo mb-3">{{evento.nombre}}</h1>
+        <div class="row notas">
+            <div class="nota-container">
+                <div class="row imagenes">
+                    <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                        <figure class="ActividadImage col-md-3 col-xs-12 col-sm-3 mx-auto"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
+                            <a href="{{e.foto.url}}" itemprop="contentUrl" data-size="480x320">
+                                <img onContextMenu="return false;" src="{{evento.foto.url}}" itemprop="thumbnail">
+                            </a>
+                            <figcaption class="text-white" itemprop="{{evento.imagen.nombre}}">{{evento.imagen.nombre}}</figcaption>
+                        </figure>
+                    </div>
+                    <h5 class="text-justify text-center text-white text-nota col-12">{{evento.descripcion|safe}}</h5>
+                </div>
+                <div class="row videos mx-auto">
+                    {% if evento.video %}
+                        <div class="col-md-4 col-12 mx-auto">
+                            <div class="thumbnail">
+                                <video preload="metadata" controls controlsList="nodownload" style="max-width:100%;">
+                                    <source src="{{evento.video.url}}" type="video/mp4">Su explorador es antiguo. Actualicelo para reproducir videos.
+                                </video>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>  
+</div>
+{% endblock content %}
+{% block extraScripts %}
+    <script src="{% static 'web/js/photoswipe.min.js' %}"></script>
+    <script src="{% static 'web/js/photoswipe-ui-default.min.js' %}"></script>
+    <script src="{% static 'web/js/galeria.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile){
+                $('html, body').animate({
+                    scrollTop: $(".container-fluid").offset().top
+                }, 1000);
+            }
+        })
+    </script>
+{% endblock extraScripts %}

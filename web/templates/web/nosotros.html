@@ -1,0 +1,37 @@
+{% extends 'web/index.html' %}
+{% load staticfiles %}
+{% block content %}
+    <br>
+    <hr class="col-12">
+    <div id="nosotros">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="col-12 text-center text-white mt-2">Bienvenidos a Ramos generales</h1>
+            <p class="text-justify text-white mt-2" style="font-size:18px;   margin-left: 25px; margin-right: 25px;">
+              "Ramos Generales" es una productora de contenidos artísticos, nacida a finales de 2017,  con el objetivo de interactuar entre la sociedad y los artistas a través de la cultura, haciendo eje en la excelencia del producto, ya sea en la magnificencia de un concierto sinfónico,  la sencillez de un dibujo a lápiz de un artista plástico hasta la intimidad de un poeta leyendo sus poemas en solitario.
+
+              Con más de 25 años realizando eventos culturales en el ámbito regional y en Buenos Aires, Carlos Lezcano y Pedro Zubieta, su paso por la gestión pública y privada les ha permitido crear un círculo virtuoso que involucra a importantes actores de la cultura correntina,  haciendo eje especialmente en la juventud, ya que esta labor les ha permitido a lo largo de los años, apuntalar la carrera de nuevos valores de variadas disciplinas.
+
+              Lezcano y Zubieta, de manera conjunta o separada, han realizado desde 1997 a la fecha, ciclos de cine, muestras plásticas, ediciones y presentaciones de libros,  montado obras de teatro, creado y conducido ciclos radiales y finalmente conciertos de música, rubro al que se han dedicado especialmente.
+              En la faz musical, se destaca además  la grabación y difusión de cerca de 30 discos de artistas chamameseros, entre los que podemos destacar registros de Mateo Villalba, Rudi y Nini Flores, Belén Majul, "Gatti - Osuna", Juan Pedro Sorribes, Gabino Chávez, Florencia de Pompert, Gabriel Cocomarola, Alejandro "Piri" Araoz, "Las Guitarras de Curuzu" y Julio Ramírez, entre otros.
+
+              En la búsqueda de la excelencia y con el convencimiento del enorme patrimonio cultural que alberga Corrientes, sale a rodar "Ramos Generales" como una manera de ponerle nombre y apellido a una gestión cultural de casi 30 años.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+{% block extraScripts %}
+    <script>
+        $(document).ready(function(){
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile){
+                $('html, body').animate({
+                    scrollTop: $(".container-fluid").offset().top
+                }, 1000);
+            }
+        })
+    </script>
+{% endblock extraScripts %}

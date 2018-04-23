@@ -33,3 +33,15 @@
   </div>
 </div>
 {% endblock content %}
+{% block extraScripts %}
+    <script>
+        $(document).ready(function(){
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile){
+                $('html, body').animate({
+                    scrollTop: $(".container-fluid").offset().top
+                }, 1000);
+            }
+        })
+    </script>
+{% endblock extraScripts %}

@@ -44,16 +44,40 @@ def prensa(request):
         page_notas = paginator.page(1)
     except EmptyPage:
         page_notas = paginator.page(paginator.num_pages)
-    return render(request, 'web/prensa.html', {"notas": page_notas})
+    return render(request, 'web/lista_notas.html', {"notas": page_notas})
+
+
+def nota(request):
+    pk = request.GET.get("pk", None)
+    n = Nota.objects.get(pk=int(pk))
+    return render(request, 'web/prensa.html', {"nota": n})
 
 
 def eventos(request):
     eventos = Evento.objects.all().order_by('-fecha')
-    return render(request, 'web/eventos.html', {"eventos": eventos})
+    page = request.GET.get('page', 1)
+    paginator = Paginator(eventos, 5)
+    try:
+        page_eventos = paginator.page(page)
+    except PageNotAnInteger:
+        page_eventos = paginator.page(1)
+    except EmptyPage:
+        page_eventos = paginator.page(paginator.num_pages)
+    return render(request, 'web/lista_eventos.html', {"eventos": page_eventos})
+
+
+def evento(request):
+    evento = request.GET.get("nombre", None)
+    e = Evento.objects.get(nombre=evento)
+    return render(request, 'web/evento.html', {"evento": e})
 
 
 def quienes_somos(request):
     return render(request, 'web/quienes_somos.html')
+
+
+def nosotros(request):
+    return render(request, 'web/nosotros.html')
 
 
 def error400(request):

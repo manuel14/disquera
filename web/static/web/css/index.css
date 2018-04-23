@@ -49,9 +49,6 @@ hr{
     margin-top: 15px;
 }
 @media(max-width: 767px){
-    body{
-        overflow-x: auto;
-    }
     #titulo{
         margin-left: 10px;
     }
