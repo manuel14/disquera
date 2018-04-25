@@ -51,6 +51,7 @@ hr{
 }
 .carousel-caption{
   bottom: 0px;
+  top:230px;
 }
 .carousel-control-prev{
   display: block;

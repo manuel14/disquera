@@ -150,6 +150,13 @@ else:
     }
     ALLOWED_HOSTS = ['www.ramosgenerales.org', 'localhost', '167.99.145.160']
 
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "simple", # default value
+    'relative_urls': False, # default value
+    'width': '100%',
+    'height': 300
+}
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

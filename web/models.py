@@ -26,7 +26,7 @@ class Nota(models.Model):
     titulo = models.CharField(max_length=100)
     fecha = models.DateTimeField(
         auto_now=False, auto_now_add=False, blank=True, null=True)
-    descripcion = tinymce_models.HTMLField()
+    descripcion = tinymce_models.HTMLField(default="")
     def htmlText(self, txt):
         texto = u'<p class="text-justify">'
         texto += txt.replace(u'\n', u'</p><p class="text-justify">')

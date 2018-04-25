@@ -9,7 +9,6 @@
 }
 .my-gallery figure {
   display: block;
-  float: left;
   margin: 0px;
   width: 100%;
 }
@@ -31,9 +30,14 @@ hr{
   margin-left: 25px;
   margin-right: 25px;
   font-size: 24px;
+  color:white;
 }
 .text-nota p{
   font-size: 24px;
+}
+.nota-container{
+  width: 100%;
+  height: 100%;
 }
 @media(max-width: 767px){
   .my-gallery figure{
