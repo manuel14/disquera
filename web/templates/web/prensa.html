@@ -22,14 +22,14 @@
                             {% for img in nota.imagenes.all %}
                                 {% if nota.imagenes.all|length == 1 %}
                                         <figure class="mx-auto image col-md-3 col-xs-12 col-sm-3"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
-                                        <a href="{{img.link.url}}" itemprop="contentUrl" data-size="600x400">
+                                        <a href="{{img.link.url}}" itemprop="contentUrl" data-size="{{img.link.width}}x{{img.link.height}}">
                                             <img src="{{img.link.url}}" itemprop="thumbnail">
                                         </a>
                                         <figcaption class="text-white text-center" itemprop="{{img.nombre}}">{{img.nombre}}</figcaption>
                                     </figure>
                                 {% else %}
                                     <figure class="image float-left col-md-3 col-xs-12 col-sm-3"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
-                                        <a href="{{img.link.url}}" itemprop="contentUrl" data-size="600x400">
+                                        <a href="{{img.link.url}}" itemprop="contentUrl" data-size="{{img.link.width}}x{{img.link.height}}">
                                             <img src="{{img.link.url}}" itemprop="thumbnail">
                                         </a>
                                         <figcaption class="text-white text-center" itemprop="{{img.nombre}}">{{img.nombre}}</figcaption>

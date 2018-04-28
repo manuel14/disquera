@@ -3,7 +3,9 @@
   float: left;
 }
 .my-gallery img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  overflow: hidden;
   height: 20vmax;
 }
 .my-gallery figure {
@@ -25,7 +27,8 @@ figure figcaption{
     margin: 0px 15px 0px 15px;
   }
   .my-gallery img {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: 50vmax;
   }
   figure figcaption{

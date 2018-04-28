@@ -1,15 +1,15 @@
 #logo{
     width:100%;
-    height:40vmax;
+    height:auto;
     padding: 0px;
 }
 #nosotros{
     width:100%;
-    height:35vmax;
+    height:auto;
 }
 #contacto{
     width: 100%;
-    height: 10vmax;
+    height: auto;
 }
 .container-fluid{
   padding: 0px;
@@ -42,8 +42,8 @@ hr{
   }
 }
 #logo_img{
-    width: 100%;
-    height: 40vmax;
+    max-width: 100%;
+    height: auto;
 }
 .card-img-top{
     margin-top: 15px;

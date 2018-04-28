@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Disco, Nota, Evento
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from PIL import Image
 import os
 
 
@@ -25,11 +26,15 @@ def galeria(request):
     imagenes = []
     for file in os.listdir(path):
         if file.endswith(('.jpg', '.png', '.jpeg')):
-            img = settings.URL_SERVER
-            img += os.path.join(img, settings.MEDIA_URL, 'galeria', file)
+            img_path = os.path.join(
+                settings.MEDIA_ROOT, 'galeria', file)
             # Para codificar caracteres que salen de utf8
             nombre = file.split(".")[0].encode('utf8', 'surrogateescape')
-            dic = {"url": img, "nombre": nombre}
+            im = Image.open(img_path)
+            img_url = os.path.join(settings.MEDIA_URL, 'galeria', file)
+            dic = {"url": img_url, "width": im.width,
+                   "height": im.height, "nombre": nombre
+                   }
             imagenes.append(dic)
     return render(request, 'web/galeria.html', {"imagenes": imagenes})
 
