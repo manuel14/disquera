@@ -36,6 +36,7 @@ hr{
 .carousel-item img{
   width: 50vmax;
   height: 20vmax;
+  object-fit: contain;
 }
 .carousel-item{
   width: 50vmax;
