@@ -2,8 +2,11 @@
 {% load staticfiles %}
 {% block extraHead %}
 	<link rel="stylesheet" href="{% static 'web/css/eventos.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/photoswipe.css' %}"> 
+    <link rel="stylesheet" href="{% static 'web/css/default-skin/default-skin.css' %}">
 {% endblock extraHead %}
 {% block content %}
+{% include "web/photoswipe.html" %}
 <div class="container-fluid">
     <br>
     <hr class="col-12">
@@ -13,13 +16,15 @@
                 <div class="row imagenes">
                     <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
                         <figure class="ActividadImage col-md-6 col-xs-12 col-sm-3 mx-auto"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
-                            <a href="#" itemprop="contentUrl" data-size="480x320">
+                            <a href="{{evento.foto.url}}" itemprop="contentUrl" data-size="{{evento.foto.width}}x{{evento.foto.height}}">
                                 <img onContextMenu="return false;" src="{{evento.foto.url}}" itemprop="thumbnail">
                             </a>
-                            <figcaption class="text-white" itemprop="{{evento.imagen.nombre}}">{{evento.imagen.nombre}}</figcaption>
                         </figure>
                     </div>
-                    <h5 class="text-justify mx-auto mt-2 text-white text-nota col-md-6 col-9">{{evento.descripcion|safe}}</h5>
+                    {% if evento.descripcion %}
+                        <h5 class="text-justify mx-auto mt-2 text-white text-nota col-md-6 col-9">{{evento.descripcion|safe}}</h5>
+                    {% endif %}
+                    
                 </div>
                 <div class="row videos mx-auto">
                     {% if evento.video %}
@@ -37,6 +42,9 @@
 </div>
 {% endblock content %}
 {% block extraScripts %}
+    <script src="{% static 'web/js/photoswipe.min.js' %}"></script>
+    <script src="{% static 'web/js/photoswipe-ui-default.min.js' %}"></script>
+    <script src="{% static 'web/js/galeria.js' %}"></script>
     <script>
         $(document).ready(function(){
             var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

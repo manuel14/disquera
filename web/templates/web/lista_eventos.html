@@ -2,8 +2,12 @@
 {% load staticfiles %}
 {% block extraHead %}
 	<link rel="stylesheet" href="{% static 'web/css/lista_eventos.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/photoswipe.css' %}"> 
+    <link rel="stylesheet" href="{% static 'web/css/default-skin/default-skin.css' %}"
+    >
 {% endblock extraHead %}
 {% block content %}
+{% include "web/photoswipe.html" %}
 <div class="container-fluid">
     <br>
     <hr class="col-12">
@@ -15,7 +19,13 @@
                     {% for e in eventos  %}
                         {% if forloop.first %}
                             <div class="carousel-item active col-md-6 col-12 mx-auto">
-                                <img src="{{e.foto.url}}" alt="First slide">
+                                <div id="my-gallery" class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a href="{{e.foto.url}}" itemprop="contentUrl" data-size="{{e.foto.width}}x{{e.foto.height}}">
+                                        <img src="{{e.foto.url}}" itemprop="thumbnail" alt="{{e.foto.name}}"/>
+                                        </a>
+                                    </figure>
+                                </div>
                                 <div class="carousel-caption">
                                     <h5>{{e.nombre}}</h5>
                                     <h5>{{e.fecha|date:'d/m/y'}}</h5>
@@ -32,7 +42,7 @@
                                     <h5>{{e.nombre}}</h5>
                                     <h5>{{e.fecha|date:'d/m/y'}}</h5>
                                     <a href="{% url 'evento' %}?nombre={{e.nombre}}">
-                                        <button class="btn btn-primary col-md-3 col-6 mx-auto mt-3">Ver más</button>
+                                        <button class="btn btn-primary col-md-3 col-6 mx-auto">Ver más</button>
                                     </a>
                                 </div>
                             </div>
@@ -53,6 +63,9 @@
 </div>
 {% endblock content %}
 {% block extraScripts %}
+<script src="{% static 'web/js/photoswipe.min.js' %}"></script>
+<script src="{% static 'web/js/photoswipe-ui-default.min.js' %}"></script>
+<script src="{% static 'web/js/galeria.js' %}"></script>
     <script>
         $(document).ready(function(){
             var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

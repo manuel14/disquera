@@ -59,6 +59,9 @@ hr{
 .carousel-control-next{
   display: block;
 }
+.container-fluid{
+    background-color:#3e4444;
+}
 @media(max-width: 1440px) and (min-width: 1025px){
   .carousel-caption{
     bottom: 0px;
@@ -121,6 +124,9 @@ hr{
   }
   .carousel-control-next{
     margin-top: 100px;
+  }
+  figure figcaption{
+    font-size: 1.0rem;
   }
 }
 
