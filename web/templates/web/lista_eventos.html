@@ -37,7 +37,13 @@
                             </div>
                         {% else %}
                             <div class="carousel-item col-md-6 col-12 mx-auto">
-                                <img src="{{e.foto.url}}" alt="First slide">
+                                <div id="my-gallery" class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a href="{{e.foto.url}}" itemprop="contentUrl" data-size="{{e.foto.width}}x{{e.foto.height}}">
+                                        <img src="{{e.foto.url}}" itemprop="thumbnail" alt="{{e.foto.name}}"/>
+                                        </a>
+                                    </figure>
+                                </div>
                                 <div class="carousel-caption">
                                     <h5>{{e.nombre}}</h5>
                                     <h5>{{e.fecha|date:'d/m/y'}}</h5>
