@@ -20,7 +20,7 @@ html, body{
 }
 hr{
     width: 95%
-    font-size: 1px;
+    font-size, 1px;
     color: rgba(0, 0, 0, 0);
     line-height: 1px;
     background-color: grey;
@@ -39,7 +39,7 @@ hr{
 }
 .carousel-item{
   width: 50vmax;
-  height: 30vmax;
+  height: 25vmax;
 }
 .eventos{
   width: 100%;
@@ -49,10 +49,6 @@ hr{
   width: 100%;
   height: 100%;
 }
-.carousel-caption{
-  bottom: 0px;
-  top: 230px; 
-}
 .carousel-control-prev{
   display: block;
 }
@@ -61,12 +57,6 @@ hr{
 }
 .container-fluid{
     background-color:#3e4444;
-}
-@media(max-width: 1440px) and (min-width: 1025px){
-  .carousel-caption{
-    bottom: 0px;
-    top: 260px;
-  }
 }
 @media(min-width: 1441px){
   .carousel-caption{

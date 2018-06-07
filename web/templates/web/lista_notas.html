@@ -16,13 +16,13 @@
                     <div class="row imagenes">
                         <div class="col-12">
                             <h1 class="text-center text-white mx-auto"><strong>{{n.titulo}}</strong></h1>
-                            <div class="my-gallery col-12 mx-auto" itemscope itemtype="http://schema.org/ImageGallery">
-                                <figure class="image col-md-6 col-12 mx-auto"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
-                                    <a href="#" itemprop="contentUrl" data-size="600x400">
-                                        <img src="{{n.imagenes.all.0.link.url}}" itemprop="thumbnail">
+                            <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                                <figure class="image"  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
+                                    <a href="#" itemprop="contentUrl" data-size="{{imagen.width}}x{{imagen.height}}">
+                                        <img class="d-block mx-auto" src="{{n.imagenes.all.0.link.url}}" itemprop="thumbnail">
                                     </a>
                                 </figure>
-                                <a class="btn btn-primary col-md-2 offset-md-5 offset-3 col-6 mt-2 mb-2" href="{% url 'nota' %}?pk={{n.pk}}">
+                                <a class="btn btn-primary d-block mx-auto col-md-3 col-6 mt-2 mb-2" href="{% url 'nota' %}?pk={{n.pk}}">
                                     Ir
                                 </a>
                             </div>

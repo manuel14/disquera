@@ -26,10 +26,10 @@
                                         </a>
                                     </figure>
                                 </div>
-                                <div class="carousel-caption">
-                                    <h5>{{e.nombre}}</h5>
-                                    <h5>{{e.fecha|date:'d/m/y'}}</h5>
-                                    <a class="btn btn-primary mx-auto col-md-3 col-6 mt-3" href="{% url 'evento' %}?nombre={{e.nombre}}">
+                                <div class="caption mx-auto">
+                                    <h5 class="text-white text-center">{{e.nombre}}</h5>
+                                    <h5 class="text-white text-center">{{e.fecha|date:'d/m/y'}}</h5>
+                                    <a class="btn btn-primary d-block mx-auto col-md-3 col-6" href="{% url 'evento' %}?nombre={{e.nombre}}">
                                         Ver más
                                     </a>
                                 </div>
@@ -44,11 +44,11 @@
                                         </a>
                                     </figure>
                                 </div>
-                                <div class="carousel-caption">
-                                    <h5>{{e.nombre}}</h5>
-                                    <h5>{{e.fecha|date:'d/m/y'}}</h5>
+                                <div class="caption mx-auto">
+                                    <h5 class="text-white text-center">{{e.nombre}}</h5>
+                                    <h5 class="text-white text-center">{{e.fecha|date:'d/m/y'}}</h5>
                                     <a href="{% url 'evento' %}?nombre={{e.nombre}}">
-                                        <button class="btn btn-primary col-md-3 col-6 mx-auto">Ver más</button>
+                                        <button class="btn btn-primary d-block col-md-3 col-6 mx-auto">Ver más</button>
                                     </a>
                                 </div>
                             </div>
